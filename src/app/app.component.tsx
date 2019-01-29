@@ -9,11 +9,11 @@ export class AppComponent extends Renderable {
   title = 'angular-jsx-sample';
   name = 'Bob';
 
-  sendValue(value: string) {
+  sendValue(value: string): void {
     this.name = value;
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <h1>{this.title}</h1>
@@ -28,17 +28,17 @@ export class AppComponent extends Renderable {
 })
 export class HelloComponent extends Renderable {
   @Input() name: string;
-  @Input() send: (value: EventTarget) => void;
+  @Input() send: (value: string) => void;
   // @Output() sendValue: EventEmitter<string> = new EventEmitter<string>();
 
-  inputValue: EventTarget;
+  inputValue: string;
 
-  handleClick() {
+  handleClick(): void {
     this.send(this.inputValue);
   }
 
-  handleChange(event: Event) {
-    this.inputValue = (event.target as any).value as EventTarget;
+  handleChange(event: Event): void {
+    this.inputValue = ((event.target as any) as HTMLInputElement).value;
   }
 
   render(): JSX.Element {
