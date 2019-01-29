@@ -1,16 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { VDomModule } from 'ng-vdom';
+import { AppComponent, HelloComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, HelloComponent],
+  imports: [VDomModule, BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HelloComponent],
 })
-export class AppModule { }
+export class AppModule {}
