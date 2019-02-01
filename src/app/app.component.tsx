@@ -47,7 +47,18 @@ export class HelloComponent extends Renderable {
         <h2>Hello {this.name} !</h2>
         <input type="text" onInput={this.handleChange.bind(this)} />
         <button onClick={this.handleClick.bind(this)}>submit</button>
+        <Foo render={bar => <Bar bar={bar} />} />
       </div>
     );
   }
 }
+
+/** render props */
+function Foo(props): JSX.Element {
+  return <div>{props.render('Foo')}</div>;
+}
+
+function Bar(props): JSX.Element {
+  return <div>{props.bar}</div>;
+}
+
