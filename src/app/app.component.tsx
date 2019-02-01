@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { createElement, Renderable } from 'ng-vdom';
 
 @Component({
@@ -18,6 +25,7 @@ export class AppComponent extends Renderable {
       <div>
         <h1>{this.title}</h1>
         <HelloComponent name={this.name} send={this.sendValue} />
+        <Aaa aaa="aaa">children</Aaa>
       </div>
     );
   }
@@ -62,3 +70,13 @@ function Bar(props): JSX.Element {
   return <div>{props.bar}</div>;
 }
 
+/** transclustion */
+function Aaa(props): JSX.Element {
+  console.log(props);
+  return (
+    <div>
+      <ng-content />
+      <h3>{props.aaa}</h3>
+    </div>
+  );
+}
